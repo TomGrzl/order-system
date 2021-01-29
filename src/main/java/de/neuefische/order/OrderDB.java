@@ -1,24 +1,32 @@
 package de.neuefische.order;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Optional;
+import de.neuefische.product.Product;
+
+import java.util.*;
 
 public class OrderDB {
-    private HashMap<Integer, Order> orders;
 
-    public Collection<Order> getOrderList() {
+    private final HashMap<Integer, Order> orders = new HashMap<>();
 
-        return null;
+
+    public void addOrder(Order order) {
+        orders.put(order.getId(), order);
     }
 
     public Optional<Order> getOrder(Integer orderId) {
-
-        return null;
+        if (orders.containsKey(orderId)) {
+            return Optional.of(orders.get(orderId));
+        }
+        return Optional.empty();
     }
 
-    public void addOrder(Order order) {
-
+    public List<Order> getOrderList() {
+        List<Order> result = new ArrayList<>(orders.values());
+        return result;
     }
+
+
+
+
 
 }
