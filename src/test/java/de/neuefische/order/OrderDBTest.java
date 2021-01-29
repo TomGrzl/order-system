@@ -1,7 +1,6 @@
 package de.neuefische.order;
 
 import de.neuefische.product.Product;
-import de.neuefische.product.ProductDB;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
@@ -35,7 +34,7 @@ class OrderDBTest {
                 new Product("Sausage")));
 
                 Order order = new Order(products);
-                Order anotherOrder = new Order(new ArrayList<Product>());
+                Order anotherOrder = new Order(new ArrayList<>());
 
         OrderDB orderDB = new OrderDB();
         orderDB.addOrder(order);
