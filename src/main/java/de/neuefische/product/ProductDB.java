@@ -1,5 +1,4 @@
 package de.neuefische.product;
-
 import java.util.*;
 
 public class ProductDB {
@@ -13,11 +12,15 @@ public class ProductDB {
     }
 
     public List<Product> getProductList() {
+
         List<Product> result = new ArrayList<>(productList.values());
         return result;
     }
 
-    public Product getProduct(Integer productId) {
-        return productList.get(productId);
+    public Optional<Product> getProduct(Integer productId) {
+        if(productList.containsKey(productId)){
+        return Optional.of(productList.get(productId));
+        }
+        return Optional.empty();
     }
 }

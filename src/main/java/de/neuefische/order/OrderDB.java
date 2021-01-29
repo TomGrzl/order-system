@@ -2,6 +2,7 @@ package de.neuefische.order;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Optional;
 
 public class OrderDB {
     private HashMap<Integer, Order> orders;
@@ -11,7 +12,7 @@ public class OrderDB {
         return null;
     }
 
-    public Order getOrder(Integer orderId) {
+    public Optional<Order> getOrder(Integer orderId) {
 
         return null;
     }

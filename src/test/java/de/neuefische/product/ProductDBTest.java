@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -32,10 +33,10 @@ class ProductDBTest {
 
     @ParameterizedTest
     @MethodSource
-    public void getProductTest(ProductDB productDB, Integer id, Product expected) {
+    public void getProductTest(ProductDB productDB, Integer id, Optional<Product> expected) {
 
         // WHEN
-        Product actual = productDB.getProduct(id);
+        Optional<Product> actual = productDB.getProduct(id);
 
         // THEN
         assertEquals(expected, actual);
@@ -53,9 +54,12 @@ class ProductDBTest {
         ProductDB productDB = new ProductDB(products);
 
         return  Stream.of(
-          Arguments.arguments(productDB,cheese.getId(), cheese),
-          Arguments.arguments(productDB,sausage.getId(),sausage),
-          Arguments.arguments(productDB, bread.getId(), null)
+          Arguments.arguments(productDB,cheese.getId(), Optional.of(cheese)),
+          Arguments.arguments(productDB,sausage.getId(),Optional.of(sausage)),
+          Arguments.arguments(productDB, bread.getId(), Optional.empty())
         );
     }
+
+
 }
+
