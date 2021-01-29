@@ -5,7 +5,7 @@ import de.neuefische.product.Product;
 import java.util.Collection;
 
 public class Order {
-    private Collection<Product> products;
+    private final Collection<Product> products;
     private final int id;
     private static int nextId = 0;
 
