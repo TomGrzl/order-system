@@ -1,5 +1,6 @@
 package de.neuefische.order;
 
+import de.neuefische.product.Food;
 import de.neuefische.product.Product;
 import org.junit.jupiter.api.Test;
 
@@ -12,9 +13,8 @@ class OrderDBTest {
     @Test
     public void addAndGetOrderTest() {
         // GIVEN
-        Collection<Product> products = new ArrayList<>();
         OrderDB orderDB = new OrderDB();
-        Order order = new Order(products);
+        Order order = new Order();
         Optional<Order> expected = Optional.of(order);
 
         // WHEN
@@ -23,18 +23,19 @@ class OrderDBTest {
 
         // THEN
         assertEquals(expected, actual);
-
     }
 
     @Test
     public void getOrderListTest() {
         // GIVEN
-        Collection<Product> products = new ArrayList<>(Arrays.asList(
-                new Product("Cheese"),
-                new Product("Sausage")));
+        Product cheese = new Food("Cheese");
+        Product sausage = new Food("Sausage");
 
-                Order order = new Order(products);
-                Order anotherOrder = new Order(new ArrayList<>());
+        Order order = new Order();
+        order.add(cheese);
+        order.add(sausage);
+
+        Order anotherOrder = new Order();
 
         OrderDB orderDB = new OrderDB();
         orderDB.addOrder(order);

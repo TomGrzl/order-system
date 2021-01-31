@@ -18,8 +18,8 @@ class ProductDBTest {
     public void getProductListTest() {
         // GIVEN
         Product[] products = new Product[]{
-                new Product("Cheese"),
-                new Product("Sausage")
+                new Food("Cheese"),
+                new Food("Sausage")
         };
         ProductDB productDB = new ProductDB(products);
 
@@ -44,9 +44,9 @@ class ProductDBTest {
 
     private static Stream<Arguments> getProductTest() {
         // GIVEN
-        Product cheese = new Product("Cheese");
-        Product sausage = new Product("Sausage");
-        Product bread = new Product("Bread");
+        Product cheese = new Food("Cheese");
+        Product sausage = new Food("Sausage");
+        Product hat = new Clothing("Hat");
 
         Product[] products = new Product[]{
                 cheese, sausage
@@ -56,7 +56,7 @@ class ProductDBTest {
         return  Stream.of(
           Arguments.arguments(productDB,cheese.getId(), Optional.of(cheese)),
           Arguments.arguments(productDB,sausage.getId(),Optional.of(sausage)),
-          Arguments.arguments(productDB, bread.getId(), Optional.empty())
+          Arguments.arguments(productDB, hat.getId(), Optional.empty())
         );
     }
 
